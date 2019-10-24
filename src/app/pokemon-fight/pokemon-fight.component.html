@@ -1,0 +1,127 @@
+<div class="container">
+    <div class="row">
+        <a href="#"> Accueil </a>
+        <button mat-raised-button color="warn" class="fight" (click)="fullCombat()">
+
+            Combat !
+
+        </button>
+        <button mat-raised-button color="primary" class="fight" (click)="beginFight()">
+            New combat
+        </button>
+    </div>
+    <!-- <div class="row">
+        <h3 class="center">Mon équipe de combat :</h3>
+        <p *ngIf="winner == equipe" class="looser"> YOU LOOSE </p>
+        <p *ngIf="winner == equipeAdv" class="winner"> YOU WIN ! </p>
+        <div *ngFor='let pokemon of equipe' class="col s6 m4">
+            <div class="card horizontal" pkmnBorderCard="teal" (click)="detailPokemon(pokemon)">
+                <div class="card-image">
+                    <img [src]="pokemon.picture">
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <p>{{ pokemon.id }}. {{ pokemon.name }}</p>
+                        <div class="progress">
+                            <div class="determinate" [ngStyle]="{
+                                    'width': progress(pokemon) }"></div>
+                        </div>
+                        <span *ngFor="let type of pokemon.types" class="{{ type | pokemonTypeColor }}">
+                            {{ type }}</span>
+                        <button *ngIf="compteur !== 0" (click)="rerollPokemon(pokemon, $event)" class="removeTeam"> Re
+                            Roll le Pokémon
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <h3 class="center">Equipe adverse</h3>
+        <div *ngFor='let pokemon of equipeAdv' class="col s6 m4">
+            <div class="card horizontal" pkmnBorderCard="teal" (click)="detailPokemon(pokemon)">
+                <div class="card-image">
+                    <img [src]="pokemon.picture">
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <p>{{ pokemon.id }}. {{ pokemon.name }}</p>
+                        <div class="progress">
+                            <div class="determinate" [ngStyle]="{
+                                        'width': progress(pokemon) }"></div>
+                        </div>
+                        <span *ngFor="let type of pokemon.types" class="{{ type | pokemonTypeColor }}">
+                            {{ type }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+    <hr>
+    <h3 class="center">Mon équipe de combat :</h3>
+    <p *ngIf="winner == equipe" class="looser"> YOU LOOSE </p>
+    <p *ngIf="winner == equipeAdv" class="winner"> YOU WIN ! </p>
+    <div fxLayout="row wrap">
+        <div *ngFor='let pokemon of equipe' fxFlex="33%" fxFlex.lt-md="60%" fxLayoutAlign="center center">
+            <mat-card fxLayout="row" class="example-card" style="width: 100%;">
+                <img mat-card-image [src]="pokemon.picture" class="card-image" style="width: 200px;">
+                <div fxLayout="column" fxFlex="40%">
+                    <mat-card-content>
+                        <p>{{ pokemon.id }}. {{ pokemon.name }}</p>
+                        <!-- <mat-progress-bar [color]= mode="determinate" [value]="progress(pokemon)"></mat-progress-bar> -->
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" [ngStyle]="{
+                                    'width': progress(pokemon),
+                                    'background-color': color(pokemon)
+                                }" aria-valuenow="progress(pokemon)" aria-valuemin="0" aria-valuemax="100">
+                                {{progress(pokemon)}}
+                            </div>
+                        </div>
+                        <p class="date"><small>{{ pokemon.hpMax }} pv / {{ pokemon.def }} def /
+                                {{ pokemon.speed }}
+                                speed</small></p>
+                        <span *ngFor="let type of pokemon.types" class="badge badge-pill type-border"
+                            [ngStyle]="{'background-color' :  type | pokemonTypeColor }">
+                            {{ type }}</span>
+
+                    </mat-card-content>
+                    <mat-card-actions>
+                        <button mat-raised-button color="primary" *ngIf="compteur !== 0"
+                            (click)="rerollPokemon(pokemon, $event)">
+                            Re Roll le Pokémon
+                        </button>
+                    </mat-card-actions>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+
+    <hr>
+    <h3 class="center">Equipe adverse</h3>
+    <div fxLayout="row wrap">
+        <div *ngFor='let pokemon of equipeAdv' fxFlex="33%" fxFlex.lt-md="60%" fxLayoutAlign="center center">
+            <mat-card fxLayout="row" class="example-card" style="width: 100%;">
+                <img mat-card-image [src]="pokemon.picture" class="card-image" style="width: 200px;">
+                <div fxLayout="column" fxFlex="40%">
+                    <mat-card-content>
+                        <p>{{ pokemon.id }}. {{ pokemon.name }}</p>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" [ngStyle]="{
+                                        'width': progress(pokemon),
+                                        'background-color': color(pokemon)
+                                    }" aria-valuenow="progress(pokemon)" aria-valuemin="0" aria-valuemax="100">
+                                {{progress(pokemon)}}
+                            </div>
+                        </div>
+                        <p class="date"><small>{{ pokemon.hpMax }} pv / {{ pokemon.def }} def /
+                                {{ pokemon.speed }}
+                                speed</small></p>
+                        <span *ngFor="let type of pokemon.types" class="badge badge-pill type-border"
+                            [ngStyle]="{'background-color' :  type | pokemonTypeColor }">
+                            {{ type }}</span>
+                    </mat-card-content>
+                </div>
+            </mat-card>
+        </div>
+    </div>
