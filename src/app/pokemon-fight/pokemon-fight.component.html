@@ -1,14 +1,20 @@
 <div class="container">
-    <div class="row">
-        <a href="#"> Accueil </a>
-        <button mat-raised-button color="warn" class="fight" (click)="fullCombat()">
+    <div class="row mt-4">
+        <div class="col-lg-2">
+            <a href="#"> Accueil </a>
+        </div>
+        <div class="offset-lg-6 col-lg-2">
+            <button mat-raised-button color="warn" class="fight" (click)="fullCombat()">
 
-            Combat !
+               Start fighting
 
-        </button>
-        <button mat-raised-button color="primary" class="fight" (click)="beginFight()">
-            New combat
-        </button>
+            </button>
+        </div>
+        <div class="col-lg-2">
+            <button mat-raised-button color="primary" class="fight" (click)="beginFight()">
+                New fight
+            </button>
+        </div>
     </div>
     <!-- <div class="row">
         <h3 class="center">Mon équipe de combat :</h3>
@@ -63,8 +69,8 @@
     <p *ngIf="winner == equipe" class="looser"> YOU LOOSE </p>
     <p *ngIf="winner == equipeAdv" class="winner"> YOU WIN ! </p>
     <div fxLayout="row wrap">
-        <div *ngFor='let pokemon of equipe' fxFlex="33%" fxFlex.lt-md="60%" fxLayoutAlign="center center">
-            <mat-card fxLayout="row" class="example-card" style="width: 100%;">
+        <div *ngFor='let pokemon of equipe' fxFlex="33%" fxFlex.lt-md="60%" fxLayoutAlign="center center" >
+            <mat-card fxLayout="row" class="example-card" style="width: 100%; height:100%;">
                 <img mat-card-image [src]="pokemon.picture" class="card-image" style="width: 200px;">
                 <div fxLayout="column" fxFlex="40%">
                     <mat-card-content>

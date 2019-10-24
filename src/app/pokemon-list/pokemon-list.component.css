@@ -1,3 +1,10 @@
 .card-image{
     margin:auto;
 }
+.example-card{
+    border : ridge 3px rgb(121, 174, 206);
+}
+.example-card:hover{
+    background-color: rgb(204, 235, 255);
+    
+}
