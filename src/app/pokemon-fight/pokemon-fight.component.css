@@ -29,7 +29,7 @@ button{
 }
 .buttons .icons{
     padding-top:7%;
-    padding-inline: 4%;
+    padding-inline: 7%;
 }
 .buttons .icons:hover{
     background-color: rgb(181, 150, 206);

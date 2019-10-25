@@ -41,8 +41,8 @@ export class PokemonFightComponent implements OnInit {
   beginFight() {
     this.winner = null;
     this.compteur = 5;
-    this.pokemonEquipeService.createRandomEquip();
-    this.pokemonEquipeAdvService.createRandomEquip();
+    this.pokemonEquipeService.createRandomEquip(4);
+    this.pokemonEquipeAdvService.createRandomEquip(6);
   }
 
   rerollPokemon(pokemon: Pokemon, event: any) {

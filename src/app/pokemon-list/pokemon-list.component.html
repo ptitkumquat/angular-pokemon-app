@@ -9,51 +9,55 @@
         </div>
     </div>
     <div fxLayout="row wrap">
-            <div *ngFor='let pokemon of equipe' fxFlex="50%" fxFlex.lt-md="60%" fxLayoutAlign="center center">
-                <mat-card fxLayout="row" class="example-card" style="width: 80%;">
-                    <img mat-card-image [src]="pokemon.picture" class="card-image" style="width: 200px;">
-                    <div fxLayout="column" fxFlex="40%">
-                        <mat-card-content>
-                            <p>{{ pokemon.id }}. {{ pokemon.name }}</p>
-                            <p class="date"><small>{{ pokemon.hpMax }} pv / {{ pokemon.def }} def /
-                                    {{ pokemon.speed }}
-                                    speed</small></p>
-                            <span *ngFor="let type of pokemon.types" class="badge badge-pill type-border"
-                                [ngStyle]="{'background-color' :  type | pokemonTypeColor }">
-                                {{ type }}</span>
-        
-                        </mat-card-content>
-                        <mat-card-actions>
-                            <button mat-raised-button color="primary" (click)="removePokemon(pokemon, $event)">
-                                Retirer de l'équipe </button>
-                        </mat-card-actions>
-                    </div>
-                </mat-card>
-            </div>
+        <div *ngFor='let pokemon of equipe' fxFlex="50%" fxFlex.lt-md="60%" fxLayoutAlign="center center">
+            <mat-card fxLayout="row" class="example-card" style="width: 80%;">
+                <img mat-card-image [src]="pokemon.picture" class="card-image" style="width: 200px;">
+                <div fxLayout="column" fxFlex="40%">
+                    <mat-card-content>
+                        <p>{{ pokemon.id }}. {{ pokemon.name }}</p>
+                        <p class="date"><small>{{ pokemon.hpMax }} pv / {{ pokemon.def }} def /
+                                {{ pokemon.speed }}
+                                speed</small></p>
+                        <div fxLayout="row">
+                            <div *ngFor="let type of pokemon.types" class="badge badge-pill type-border"
+                                [ngStyle]="{'background-color' :  type | pokemonTypeColor }" fxLayout="row"
+                                fxLayoutAlign="center center">
+                                <span class="type-text">{{ type }}</span>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                    <mat-card-actions>
+                        <button mat-raised-button color="primary" (click)="removePokemon(pokemon, $event)">
+                            Retirer de l'équipe </button>
+                    </mat-card-actions>
+                </div>
+            </mat-card>
         </div>
+    </div>
     <hr />
 
 
-<div fxLayout="row wrap">
-    <div *ngFor='let pokemon of pokemons' fxFlex="50%" fxFlex.lt-md="60%" fxLayoutAlign="center center">
-        <mat-card fxLayout="row" class="example-card" style="width: 80%;">
-            <img mat-card-image [src]="pokemon.picture" class="card-image" style="width: 200px;">
-            <div fxLayout="column" fxFlex="40%">
-                <mat-card-content>
-                    <p>{{ pokemon.id }}. {{ pokemon.name }}</p>
-                    <p class="date"><small>{{ pokemon.hpMax }} pv / {{ pokemon.def }} def /
-                            {{ pokemon.speed }}
-                            speed</small></p>
-                    <span *ngFor="let type of pokemon.types" class="badge badge-pill type-border"
-                        [ngStyle]="{'background-color' :  type | pokemonTypeColor }">
-                        {{ type }}</span>
+    <div fxLayout="row wrap">
+        <div *ngFor='let pokemon of pokemons' fxFlex="50%" fxFlex.lt-md="60%" fxLayoutAlign="center center">
+            <mat-card fxLayout="row" class="example-card" style="width: 80%;">
+                <img mat-card-image [src]="pokemon.picture" class="card-image" style="width: 200px;">
+                <div fxLayout="column" fxFlex="40%">
+                    <mat-card-content>
+                        <p>{{ pokemon.id }}. {{ pokemon.name }}</p>
+                        <p class="date"><small>{{ pokemon.hpMax }} pv / {{ pokemon.def }} def /
+                                {{ pokemon.speed }}
+                                speed</small></p>
+                        <span *ngFor="let type of pokemon.types" class="badge badge-pill type-border"
+                            [ngStyle]="{'background-color' :  type | pokemonTypeColor }">
+                            {{ type }}</span>
 
-                </mat-card-content>
-                <mat-card-actions>
-                    <button mat-raised-button color="primary" class="addPokemon" (click)="addPokemon(pokemon, $event)">
-                        Ajouter à l'équipe </button>
-                </mat-card-actions>
-            </div>
-        </mat-card>
+                    </mat-card-content>
+                    <mat-card-actions>
+                        <button mat-raised-button color="primary" class="addPokemon"
+                            (click)="addPokemon(pokemon, $event)">
+                            Ajouter à l'équipe </button>
+                    </mat-card-actions>
+                </div>
+            </mat-card>
+        </div>
     </div>
-</div>

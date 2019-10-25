@@ -8,6 +8,7 @@ import { PokemonService } from './pokemon.service';
 export class EquipeService {
 
   private equipe: Pokemon[] = [];
+  private miniEquip: Pokemon[] = [];
 
   constructor(private pokemonsService: PokemonService) { }
 
@@ -38,9 +39,9 @@ export class EquipeService {
     this.equipe.splice(pokemonIndex, 1);
   }
 
-  createRandomEquip() {
+  createRandomEquip(max: number) {
     this.equipe.splice(0);
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < max; i++) {
       this.generatePokemon();
     }
   }
