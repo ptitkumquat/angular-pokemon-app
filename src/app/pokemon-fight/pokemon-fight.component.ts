@@ -20,6 +20,7 @@ export class PokemonFightComponent implements OnInit {
   private coeff: number[] = [];
   private pokemon: Pokemon;
   private blank: boolean;
+  private blinkColor: string = "";
   private defenseur: Pokemon;
 
   constructor(
@@ -66,11 +67,22 @@ export class PokemonFightComponent implements OnInit {
 
   async attack(attaquant: Pokemon, defenseur: Pokemon) {
     this.defenseur = defenseur;
-    await this.blink(5);
-    defenseur.hp -= attaquant.cp * this.getCoeffType(attaquant, defenseur) / (1 + defenseur.def / 25);
+
+    if (Math.random() > 0.1) {
+      if (Math.random() > 0.9) {
+        await this.blink(15, 25, "red");
+        defenseur.hp -= attaquant.cp * this.getCoeffType(attaquant, defenseur) / (1 + defenseur.def / 25) * 2;
+      } else {
+        await this.blink(5, 50, "rgb(172,236,230)");
+        defenseur.hp -= attaquant.cp * this.getCoeffType(attaquant, defenseur) / (1 + defenseur.def / 25);
+      }
+    } else {
+      await this.blink(1, 250, "black");
+    }
+
     if (defenseur.hp < 0)
       defenseur.hp = 0;
-    console.log(defenseur.hp);
+      
     await this.sleep(500);
   }
 
@@ -124,7 +136,7 @@ export class PokemonFightComponent implements OnInit {
   color(pokemon: Pokemon): string {
     const currentHp = pokemon.hp / this.pokemonService.getPokemon(pokemon.id).hpMax * 2 - 1;
     if (this.blank && pokemon == this.defenseur) {
-      return "rgb(172,236,230)";
+      return this.blinkColor;
     } else {
       if (currentHp > 0)
         return "rgb(" + (240 - 240 * currentHp) + "," + (120 + 60 * currentHp) + "," + (0 + 90 * currentHp) + ")";
@@ -133,12 +145,13 @@ export class PokemonFightComponent implements OnInit {
     }
   }
 
-  async blink(n: number) {
+  async blink(n: number, blinkTime: number, color: string) {
+    this.blinkColor = color;
     for (var i = 0; i < n; i++) {
       this.blank = true;
-      await this.sleep(50);
+      await this.sleep(blinkTime);
       this.blank = false;
-      await this.sleep(50);
+      await this.sleep(blinkTime);
     }
   }
 
