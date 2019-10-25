@@ -40,7 +40,7 @@ export class PokemonFightComponent implements OnInit {
 
   beginFight() {
     this.winner = null;
-    this.compteur = 2;
+    this.compteur = 5;
     this.pokemonEquipeService.createRandomEquip();
     this.pokemonEquipeAdvService.createRandomEquip();
   }
@@ -49,7 +49,7 @@ export class PokemonFightComponent implements OnInit {
     event.stopPropagation();
     this.pokemonEquipeService.removePokemon(pokemon);
     this.pokemonEquipeService.generatePokemon();
-    this.compteur -= 1;
+    this.compteur -= 2;
   }
 
   async combat(p1: Pokemon, p2: Pokemon) {
@@ -153,6 +153,26 @@ export class PokemonFightComponent implements OnInit {
       this.blank = false;
       await this.sleep(blinkTime);
     }
+  }
+
+  changeOrder(p1: Pokemon) {
+    let indexP1 = this.equipe.findIndex((pokemon) => pokemon.id === p1.id);
+    // let indexP2 = this.equipe.findIndex((pokemon) => pokemon.id === p2.id);
+
+    let lastIndex = this.equipe.length-1;
+    [this.equipe[indexP1], this.equipe[lastIndex]] = [this.equipe[lastIndex], this.equipe[indexP1]];
+
+    this.compteur -= 1;
+  }
+
+  evolvePokemon(pokemon: Pokemon){
+    let index = this.equipe.findIndex((pk)=> pk === pokemon);
+    this.equipe[index] = this.pokemonService.getPokemon(this.validateId(pokemon.id));
+      this.compteur -= 3;
+  }
+
+  validateId(id: number):number{
+    return id+1 >151 ? 1 : id +1; 
   }
 
 }

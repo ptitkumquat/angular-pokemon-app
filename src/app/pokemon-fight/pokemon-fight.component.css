@@ -12,8 +12,54 @@
     height:25px;
     width:60px;
 }
+button{
+    text-align: center;
+    font-size: 0.7em;
+    width: 95%;
+    height:auto;
+    padding-top:1%;
+    padding-bottom: 1%;
+    
+}
+.buttons{
+    display : flex;
+    flex-direction: row;
+    justify-content: space-between;
+    cursor: pointer;
+}
+.buttons .icons{
+    padding-top:7%;
+    padding-inline: 4%;
+}
+.buttons .icons:hover{
+    background-color: rgb(181, 150, 206);
+    color: black;
+    text-shadow: 1px 1px 0px white;
+}
 
 .type-text{
     font-weight: lighter;
     font-size: 1.25em;
+}
+.compteur{
+    padding-left: 60%;
+}
+.icons{
+    text-shadow: 1px 1px 0px black;
+    background-color: rgb(53, 42, 158);
+    border-radius: 50%;
+    text-align: center;
+    width:100%;
+    color: white;
+    padding-top: 2%;
+    padding-inline: 1%;
+    margin-inline: 2%;   
+}
+.actions{
+    background-color: rgba(208, 225, 233, 0.5);
+    border-radius:15px;
+    padding: 1%;
+}
+.actions h4{
+    margin-bottom: 2%;
 }

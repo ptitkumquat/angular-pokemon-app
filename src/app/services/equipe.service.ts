@@ -29,6 +29,10 @@ export class EquipeService {
     }
   }
 
+  getPokemon(pokemon: Pokemon):Pokemon{
+    return pokemon;
+  }
+
   removePokemon(pokemon: Pokemon) {
     let pokemonIndex = this.equipe.indexOf(pokemon);
     this.equipe.splice(pokemonIndex, 1);
