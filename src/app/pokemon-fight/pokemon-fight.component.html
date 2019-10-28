@@ -59,7 +59,7 @@
                                     <span class="icons" *ngIf="compteur > 1" (click)="rerollPokemon(pokemon,$event)">
                                         <mat-icon>autorenew</mat-icon>
                                     </span>
-                                    <span class="icons" *ngIf="compteur > 0" (click)="evolvePokemon(pokemon)">
+                                    <span class="icons" [className]="indexP1 === null ? 'icons' : 'iconsChange' " *ngIf="compteur > 0" (click)="changeOrder(pokemon)">
                                         <mat-icon>swap_horiz</mat-icon>
                                     </span>
                                 </div>

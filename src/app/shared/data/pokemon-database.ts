@@ -895,7 +895,7 @@ export const POKEMONS: Pokemon[] = [
     speed: 40,
     picture: "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/069.png",
     miniature: "https://www.pokemontrash.com/pokedex/images/minixy/069.png",
-    types: ["Plante"],
+    types: ["Plante", "Poison"],
     created: new Date()
   },
   {
@@ -908,7 +908,7 @@ export const POKEMONS: Pokemon[] = [
     speed: 55,
     picture: "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/070.png",
     miniature: "https://www.pokemontrash.com/pokedex/images/minixy/070.png",
-    types: ["Plante"],
+    types: ["Plante", "Poison"],
     created: new Date()
   },
   {
@@ -921,7 +921,7 @@ export const POKEMONS: Pokemon[] = [
     speed: 70,
     picture: "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/071.png",
     miniature: "https://www.pokemontrash.com/pokedex/images/minixy/071.png",
-    types: ["Plante"],
+    types: ["Plante", "Poison"],
     created: new Date()
   },
   {

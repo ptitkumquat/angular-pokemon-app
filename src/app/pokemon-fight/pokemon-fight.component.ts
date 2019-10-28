@@ -22,6 +22,7 @@ export class PokemonFightComponent implements OnInit {
   private blank: boolean;
   private blinkColor: string = "";
   private defenseur: Pokemon;
+  private indexP1: number = null;
 
   constructor(
     private router: Router,
@@ -155,15 +156,21 @@ export class PokemonFightComponent implements OnInit {
     }
   }
 
-  changeOrder(p1: Pokemon) {
-    let indexP1 = this.equipe.findIndex((pokemon) => pokemon.id === p1.id);
-    // let indexP2 = this.equipe.findIndex((pokemon) => pokemon.id === p2.id);
-
-    let lastIndex = this.equipe.length-1;
-    [this.equipe[indexP1], this.equipe[lastIndex]] = [this.equipe[lastIndex], this.equipe[indexP1]];
-
-    this.compteur -= 1;
+  changeOrder(p: Pokemon) {
+    if(this.indexP1 === null){
+       this.indexP1 = this.equipe.findIndex((pokemon) => pokemon.id === p.id);
+    }
+    else{
+      let indexP2 = this.equipe.findIndex((pokemon) => pokemon.id === p.id);
+      if(this.indexP1 !== indexP2){
+        [this.equipe[this.indexP1], this.equipe[indexP2]] = [this.equipe[indexP2], this.equipe[this.indexP1]];
+        this.compteur -= 1;
+      }
+      this.indexP1 = null;
+    }
+    
   }
+ 
 
   evolvePokemon(pokemon: Pokemon){
     let index = this.equipe.findIndex((pk)=> pk === pokemon);

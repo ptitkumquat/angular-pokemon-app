@@ -27,7 +27,7 @@ button{
     justify-content: space-between;
     cursor: pointer;
 }
-.buttons .icons{
+.buttons .icons, .buttons .iconsChange{
     padding-top:7%;
     padding-inline: 7%;
 }
@@ -36,7 +36,6 @@ button{
     color: black;
     text-shadow: 1px 1px 0px white;
 }
-
 .type-text{
     font-weight: lighter;
     font-size: 1.25em;
@@ -51,6 +50,17 @@ button{
     text-align: center;
     width:100%;
     color: white;
+    padding-top: 2%;
+    padding-inline: 1%;
+    margin-inline: 2%;   
+}
+.iconsChange{
+    background-color: rgb(181, 150, 206);
+    color: black;
+    text-shadow: 1px 1px 0px white;
+    border-radius: 50%;
+    text-align: center;
+    width:100%;
     padding-top: 2%;
     padding-inline: 1%;
     margin-inline: 2%;   
