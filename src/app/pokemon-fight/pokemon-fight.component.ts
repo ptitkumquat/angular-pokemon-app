@@ -58,7 +58,9 @@ export class PokemonFightComponent implements OnInit {
   }
 
   progress(pokemon: Pokemon):string{
-    return this.pokemonFightService.progress(this.fight, pokemon);
+    let progress = this.pokemonFightService.progress(this.fight, pokemon);
+    console.log(progress);
+    return progress;
   }
 
   detailPokemon(pokemon: Pokemon) {

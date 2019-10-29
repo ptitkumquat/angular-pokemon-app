@@ -110,7 +110,13 @@ export class FightService {
 
   progress(fight:Fight, pokemon: Pokemon): string {
     const max = this.pokemonService.getPokemon(pokemon.id).hpMax;
-    return Math.floor(pokemon.hp / max * 100) + "%";
+    let progress = Math.floor(pokemon.hp / max * 100);
+    if(progress > 0){
+      return progress + "%";
+    }
+    else{
+    return "0%";
+    }
   }
 
   detailPokemon(fight:Fight, pokemon: Pokemon) {
