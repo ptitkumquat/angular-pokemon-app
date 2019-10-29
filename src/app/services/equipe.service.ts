@@ -12,6 +12,10 @@ export class EquipeService {
 
   constructor(private pokemonsService: PokemonService) { }
 
+  createEquipe(){
+    return new EquipeService(this.pokemonsService);
+  }
+
   selectPokemon(pokemon: Pokemon) {
     alert("JE TE CHOISIS, " + pokemon.name.toUpperCase() + " !!!!!!!");
   }
@@ -39,11 +43,12 @@ export class EquipeService {
     this.equipe.splice(pokemonIndex, 1);
   }
 
-  createRandomEquip(max: number) {
+  createRandomEquip(max: number):Pokemon[] {
     this.equipe.splice(0);
     for (let i = 0; i < max; i++) {
       this.generatePokemon();
     }
+    return this.equipe;
   }
 
   generatePokemon() {
