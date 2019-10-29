@@ -3,6 +3,7 @@ import { Pokemon } from '../shared/model/pokemon';
 import { Router } from '@angular/router';
 import { PokemonService } from '../services/pokemon.service';
 import { EquipeService } from '../services/equipe.service';
+import { PokemonRushComponent } from './pokemon-rush/pokemon-rush.component';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -25,6 +26,11 @@ export class PokemonListComponent implements OnInit {
   ngOnInit() {
     this.pokemons = this.pokemonsService.getPokemons();
     this.equipe = this.pokemonEquipeService.getEquipe();
+  }
+
+  goOnRush(pokemon: Pokemon){
+    pokemon = this.pokemonsService.clonePokemon(pokemon);
+    this.router.navigate(["/rush"], {state: pokemon});
   }
 
   detailPokemon(pokemon: Pokemon) {

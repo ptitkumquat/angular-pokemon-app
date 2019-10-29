@@ -1,0 +1,77 @@
+<div class="container">
+    <div class="return row">
+        <div class="col-lg-10">
+            <a href="#"> Retour à la liste des pokémons </a>
+        </div>
+    </div>
+    <div fxLayout="row wrap" fxLayoutAlign="center center">
+        <div *ngFor="let pokemon of fight.equipe" fxFlex="50%" fxFlex.lt-md="60%" fxLayoutAlign="center center">
+            <mat-card fxLayout="row" class="example-card" style="width: 80%;">
+                <img mat-card-image [src]="pokemon.picture" class="card-image" style="width: 200px;">
+                <div fxLayout="column" fxFlex="40%">
+                    <mat-card-content>
+                        <p>{{ pokemon.id }}. {{ pokemon.name }}</p>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" [ngStyle]="{
+                                    'width': progress(pokemon),
+                                    'background-color': color(pokemon)
+                                }" aria-valuenow="progress(pokemon)" aria-valuemin="0" aria-valuemax="100">
+                                {{progress(pokemon)}}
+                            </div>
+                        </div>
+                        <p class="date"><small>{{ pokemon.hpMax }} pv / {{ pokemon.def }} def /
+                                {{ pokemon.speed }}
+                                speed</small></p>
+                        <div fxLayout="row">
+                            <div *ngFor="let type of pokemon.types" class="badge badge-pill type-border"
+                                [ngStyle]="{'background-color' :  type | pokemonTypeColor }" fxLayout="row"
+                                fxLayoutAlign="center center">
+                                <span class="type-text">{{ type }}</span>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                    <mat-card-actions>
+                        <button mat-raised-button color="primary" (click)="rush(pokemon)">
+                            Rush </button>
+                    </mat-card-actions>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+    <hr>
+    <h3 class="center">Adversaire :</h3>
+    <div fxLayout="row wrap">
+        <div *ngFor='let pokemon of fight.equipeAdv' fxFlex="33%" fxFlex.lt-md="60%" fxLayoutAlign="center center">
+            <mat-card fxLayout="row" class="example-card" style="width: 95%; height:90%;">
+                <img mat-card-image [src]="pokemon.picture" class="card-image" style="width: 200px;">
+                <div fxLayout="column" fxFlex="40%">
+                    <mat-card-content>
+                        <p>{{ pokemon.id }}. {{ pokemon.name }}</p>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" [ngStyle]="{
+                                        'width': progress(pokemon),
+                                        'background-color': color(pokemon)
+                                    }" aria-valuenow="progress(pokemon)" aria-valuemin="0" aria-valuemax="100">
+                                {{progress(pokemon)}}
+                            </div>
+                        </div>
+                        <p class="date"><small>{{ pokemon.hpMax }} pv / {{ pokemon.def }} def /
+                                {{ pokemon.speed }}
+                                speed</small></p>
+                        <div fxLayout="row">
+                            <div *ngFor="let type of pokemon.types" class="badge badge-pill type-border"
+                                [ngStyle]="{'background-color' :  type | pokemonTypeColor }" fxLayout="row"
+                                fxLayoutAlign="center center">
+                                <span class="type-text">{{ type }}</span>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                    <mat-card-actions *ngIf="!fight.equipe[0].hp>0">
+                        <button mat-raised-button color="primary" (click)="rush(pokemon)">
+                            Rush </button>
+                    </mat-card-actions>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+</div>

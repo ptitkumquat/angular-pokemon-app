@@ -73,13 +73,19 @@ export class FightService {
   }
 
   getCoeffType(fight:Fight, p1: Pokemon, p2: Pokemon): number {
+    let coeff1 = 1;
+    let coeff2 = 0;
     fight.coeff = [];
-    p1.types.forEach((type) => {
-      p2.types.forEach((type2) => {
-        fight.coeff.push(this.mockType.getEfficacite()[TypeEnum[type]][TypeEnum[type2]]);
-      });
+    p2.types.forEach((type2) => {
+      coeff1 *= this.mockType.getEfficacite()[TypeEnum[p1.types[0]]][TypeEnum[type2]];
     });
-    return fight.coeff.reduce((a, c) => a * c);
+    if(p1.types.length == 2){
+      coeff2 = 1;
+      p2.types.forEach((type2) => {
+        coeff2 *= this.mockType.getEfficacite()[TypeEnum[p1.types[1]]][TypeEnum[type2]];
+      });
+    }
+    return (coeff1 + coeff2) / 2;
   }
 
   sleep(milliseconds: number) {
