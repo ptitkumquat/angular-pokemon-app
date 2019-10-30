@@ -14,8 +14,6 @@ import { Fight } from 'src/app/shared/model/fight';
 })
 export class PokemonRushComponent implements OnInit {
 
-  private pokemonUnique: Pokemon;
-  private equipeAdvInf: Pokemon[];
   private fight: Fight;
   private test: boolean = false;
 
@@ -23,7 +21,6 @@ export class PokemonRushComponent implements OnInit {
     private router: Router,
     private pokemonService: PokemonService,
     private equipeAdvService: EquipeService,
-    private mockType: TypesService,
     private pokemonFightService: FightService
   ) {
     this.fight = this.pokemonFightService.createFight();
